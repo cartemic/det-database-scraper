@@ -40,9 +40,11 @@ for url in url_list:
     offset = len(key[0])
     num_elements = pagetext.count(key[0])
 
+    theTitle = pagetext[pagetext.find('<TITLE>')+7:pagetext.find('</TITLE>')]
+    print(theTitle)
     fuelType = stringFind(pagetext[pagetext.find('H3'):pagetext.find('/H3')],
                           '-', 'Fuel', 2)
-    workbook = xlsxwriter.Workbook('Detonation DB info '+fuelType+'.xlsx')
+    workbook = xlsxwriter.Workbook(theTitle+'.xlsx')
 
     loc = [0, 0]
     for i in range(num_elements):
